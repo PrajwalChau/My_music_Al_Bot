@@ -9,6 +9,8 @@ import analysisRoutes from './routes/analysis.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 
 dotenv.config();
+
+// Connect to Database (Non-blocking for serverless)
 connectDB();
 
 const app = express();
@@ -16,15 +18,13 @@ const PORT = process.env.PORT || 5000;
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? [/\.vercel\.app$/, /yourdomain\.com$/] 
-    : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: true, // Allow all origins in production for simplicity during debugging, can be restricted later
   credentials: true,
 }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 50,
+  max: 100, // Increased limit for production
   message: 'Too many requests from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
