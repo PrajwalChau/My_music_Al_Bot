@@ -17,7 +17,6 @@
     "express-rate-limit": "^7.3.1",
     "genius-lyrics-api": "^3.2.1",
     "helmet": "^7.1.0",
-    "mongoose": "^8.4.3",
     "morgan": "^1.10.0",
     "openai": "^4.52.0"
   },

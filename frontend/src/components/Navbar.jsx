@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Music, TrendingUp } from 'lucide-react';
+import { TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
@@ -14,13 +15,14 @@ const Navbar = () => {
     >
       <div className="section-padding max-w-7xl mx-auto flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-red to-accent-orange flex items-center justify-center group-hover:scale-110 transition-transform">
-            <Music className="w-5 h-5 text-white" />
+          <div className="w-10 h-10 overflow-hidden rounded-xl group-hover:scale-110 transition-transform bg-white/5 flex items-center justify-center">
+            <img src={logo} alt="Music Intelligence Logo" className="w-full h-full object-cover" />
           </div>
           <span className="font-display font-bold text-xl hidden sm:block">
             <span className="gradient-text">Music</span> Intelligence
           </span>
         </Link>
+...
 
         <div className="flex items-center gap-2">
           <Link to="/">

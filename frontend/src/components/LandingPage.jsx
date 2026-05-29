@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, Brain, Music, Zap } from 'lucide-react';
 import SearchBar from './SearchBar.jsx';
 import { useApp } from '../context/AppContext.jsx';
+import logo from '../assets/logo.png';
 
 const LandingPage = () => {
   const { error } = useApp();
@@ -17,12 +18,20 @@ const LandingPage = () => {
     <div className="min-h-screen flex flex-col items-center justify-center section-padding pt-24 pb-12">
       <div className="text-center max-w-4xl mx-auto mb-12">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-6"
+          className="mb-8 flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-red/10 border border-accent-red/20 text-accent-red text-sm font-medium mb-6">
+          <motion.div 
+            initial={{ scale: 0.8, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+            className="w-24 h-24 mb-6 rounded-3xl overflow-hidden shadow-2xl shadow-accent-red/20 border border-white/10 p-1 bg-white/5"
+          >
+            <img src={logo} alt="Music Intelligence Logo" className="w-full h-full object-cover rounded-2xl" />
+          </motion.div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-red/10 border border-accent-red/20 text-accent-red text-sm font-medium">
             <Sparkles className="w-4 h-4" />
             <span>AI-Powered Music Understanding</span>
           </div>
