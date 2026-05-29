@@ -43,7 +43,7 @@ const LandingPage = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg text-white/60 max-w-2xl mx-auto mb-10"
         >
-          Enter any song and artist to unlock deep AI analysis — themes, emotions, meaning, and cultural context powered by NVIDIA NIM.
+          Enter any song and artist to unlock deep AI analysis — themes, emotions, meaning, and cultural context powered by NVIDIA NIM and Created by Prajwal.
         </motion.p>
 
         <SearchBar />
@@ -88,7 +88,7 @@ const LandingPage = () => {
         transition={{ delay: 1 }}
         className="mt-16 text-center text-white/30 text-sm"
       >
-        <p>Powered by Genius API + NVIDIA NIM + MERN Stack</p>
+        <p>Powered by Genius API + NVIDIA NIM + MERN Stack by Prajwal</p>
       </motion.div>
     </div>
   );

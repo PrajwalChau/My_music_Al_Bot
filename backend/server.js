@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 5000;
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? ['https://yourdomain.com'] : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: process.env.NODE_ENV === 'production' 
+    ? [/\.vercel\.app$/, /yourdomain\.com$/] 
+    : ['http://localhost:5173', 'http://localhost:3000'],
   credentials: true,
 }));
 
@@ -42,16 +44,18 @@ app.use('/api', analysisRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const server = app.listen(PORT, () => {
-  console.log(`🎵 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' || process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`🎵 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  });
+}
 
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled Rejection:', err.message);
-  server.close(() => process.exit(1));
 });
 
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err.message);
-  server.close(() => process.exit(1));
 });
+
+export default app;
