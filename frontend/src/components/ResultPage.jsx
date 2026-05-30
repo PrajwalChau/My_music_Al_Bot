@@ -7,6 +7,7 @@ import LyricsDisplay from './LyricsDisplay.jsx';
 import EmotionMeter from './EmotionMeter.jsx';
 import ThemeBadges from './ThemeBadges.jsx';
 import AnalysisGrid from './AnalysisCard.jsx';
+import PlayButton from './PlayButton.jsx';
 
 const ResultPage = () => {
   const { currentAnalysis, loading } = useApp();
@@ -44,13 +45,13 @@ const ResultPage = () => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="relative group"
+          className="relative group flex flex-col items-center"
         >
           <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden shadow-2xl shadow-accent-red/20">
-            {data.albumArt ? (
+            {(data.thumbnail || data.albumArt) ? (
               <img
-                src={data.albumArt}
-                alt={`${data.title} album art`}
+                src={data.thumbnail || data.albumArt}
+                alt={`${data.title} thumbnail`}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             ) : (
@@ -59,7 +60,8 @@ const ResultPage = () => {
               </div>
             )}
           </div>
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-accent-red/30 transition-all" />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-accent-red/30 transition-all" style={{ bottom: 'auto', height: 'calc(100% - 5rem)' }} />
+          <PlayButton audioUrl={data.spotifyPreviewUrl} />
         </motion.div>
 
         <div className="flex-1 pt-2">
@@ -84,15 +86,15 @@ const ResultPage = () => {
               <TrendingUp className="w-3 h-3" />
               {data.searchCount} searches
             </span>
-            {data.geniusUrl && (
+            {data.youtubeUrl && (
               <a
-                href={data.geniusUrl}
+                href={data.youtubeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 text-accent-red hover:text-accent-orange transition-colors"
               >
                 <ExternalLink className="w-3 h-3" />
-                View on Genius
+                Watch on YouTube
               </a>
             )}
           </div>

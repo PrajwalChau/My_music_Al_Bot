@@ -8,7 +8,7 @@ const LandingPage = () => {
   const { error } = useApp();
 
   const features = [
-    { icon: <Music className="w-6 h-6" />, title: 'Lyrics Intelligence', desc: 'Fetch complete lyrics from Genius API with metadata and album art.' },
+    { icon: <Music className="w-6 h-6" />, title: 'Lyrics Intelligence', desc: 'Fetch lyrics from YouTube auto-captions with thumbnails and metadata.' },
     { icon: <Brain className="w-6 h-6" />, title: 'AI Analysis', desc: 'Powered by NVIDIA NIM for deep thematic and emotional understanding.' },
     { icon: <Sparkles className="w-6 h-6" />, title: 'Theme Extraction', desc: 'Automatically identifies themes, emotions, mood, and genre vibes.' },
     { icon: <Zap className="w-6 h-6" />, title: 'Instant Results', desc: 'Get comprehensive song analysis in seconds with beautiful visuals.' },
@@ -97,7 +97,7 @@ const LandingPage = () => {
         transition={{ delay: 1 }}
         className="mt-16 text-center text-white/30 text-sm"
       >
-        <p>Powered by Genius API + NVIDIA NIM + MERN Stack by Prajwal</p>
+        <p>Powered by YouTube Data API + NVIDIA NIM + MERN Stack by Prajwal</p>
       </motion.div>
     </div>
   );

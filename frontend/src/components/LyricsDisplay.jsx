@@ -17,7 +17,7 @@ const LyricsDisplay = ({ lyrics, title, artist }) => {
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-display font-semibold text-lg flex items-center gap-2">
           <FileText className="w-5 h-5 text-accent-gold" />
-          Lyrics
+          Lyrics (from YouTube CC)
         </h3>
         <span className="text-xs text-white/40">{lines.length} lines</span>
       </div>
